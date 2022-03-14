@@ -11,7 +11,7 @@
 
   ## Usage
     * Write notes where instructed. 
-    * Write, Delete, and Save notes.
+    * Write, Delete, and Save note buttons.
 
   ## Contributing
   * Rider Cogswell
