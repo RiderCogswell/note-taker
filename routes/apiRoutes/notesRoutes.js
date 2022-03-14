@@ -4,12 +4,22 @@ const {
         createNewNote,
         validateNote
 } = require('../../lib/notes');
-const { notes } = require('../../db/db.json');
+const { notes } = require('../../db/notes.json');
 
 router.get('/notes', (req, res) => {
     let results = notes;
     res.json(results);
 });
+
+router.delete('/notes/:id', (req, res) => {
+    const result = findById(req.params.id, notes);
+
+    const notesIndex = notes.findIndex(note => note.id == result);
+
+    notes.splice(notesIndex, 1);
+
+    return res.send();
+})
 
 router.post('/notes', (req, res) => {
     req.body.id = notes.length.toString();
@@ -20,4 +30,7 @@ router.post('/notes', (req, res) => {
         const note = createNewNote(req.body, notes);
         res.json(note);
     }
-})
+
+});
+
+module.exports = router;
